@@ -13,6 +13,7 @@ import ApartmentProtectedIndex from "./pages/ApartmentProtectedIndex"
 import ApartmentShow from "./pages/ApartmentShow"
 import ApartmentEdit from "./pages/ApartmentEdit"
 import NotFound from "./pages/NotFound"
+import ApartmentNew from "./pages/ApartmentNew"
 
 
 const App = () => {
@@ -21,15 +22,16 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <Header currentUser={currentUser}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/apartmentindex" element={<ApartmentIndex />} />
+        <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
         <Route path="/myapartments" element={<ApartmentProtectedIndex />} />
-        <Route path="/apartmentshow" element={<ApartmentShow />} />
-        <Route path="/apartmentedit" element={<ApartmentEdit />} />
+        <Route path="/apartmentshow/:id" element={<ApartmentShow apartments={apartments}/>} />
+        <Route path="/apartmentnew" element={<ApartmentNew currentUser={currentUser} />} />
+        <Route path="/apartmentedit/:id" element={<ApartmentEdit currentUser={currentUser} apartments={apartments} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
