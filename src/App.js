@@ -28,7 +28,12 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
-        <Route path="/myapartments" element={<ApartmentProtectedIndex />} />
+        {currentUser && (      
+          <Route path="/myapartments" element={<ApartmentProtectedIndex 
+            apartments={apartments}
+            currentUser={currentUser}
+          />} />
+        )}
         <Route path="/apartmentshow/:id" element={<ApartmentShow apartments={apartments}/>} />
         <Route path="/apartmentnew" element={<ApartmentNew currentUser={currentUser} />} />
         <Route path="/apartmentedit/:id" element={<ApartmentEdit currentUser={currentUser} apartments={apartments} />} />
