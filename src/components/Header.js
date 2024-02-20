@@ -33,7 +33,7 @@ const Header = ({currentUser, logout}) => {
         {!currentUser && (
           <>
             <NavItem>
-              <NavLink to="/login" className="nav-link">
+              <NavLink to="/signin" className="nav-link">
                 Sign In
               </NavLink>
             </NavItem>
